@@ -1,14 +1,14 @@
 export interface Product{
-    //todo: id: string;
+    id: string;
     description: string;
     images: string[];
     inStock: number;
     price: number;
-    sizes: Size[];
+    Size: Size[];
     slug: string;
     tags: string[];
     title: string;
-    type: ValidType;
+    //todo: type: ValidType;
     gender: ValidCategorie;
 }
 export type ValidCategorie ='men'|'women'|'kid'|'unisex';

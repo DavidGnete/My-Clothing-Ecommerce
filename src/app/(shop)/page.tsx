@@ -1,11 +1,32 @@
-import { ProductGrid, Title } from "@/components";
-import { titleFont } from "@/config/fonts";
-import { initialData } from "@/seed/seed";
+export const revalidate = 60;
 
 
-const products = initialData.products;
+import { getPaginateProductsWithImages } from "@/actions";
+import { Pagination, ProductGrid, Title } from "@/components";
+import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
-export default function Home() {
+
+interface Props {
+  searchParams :{
+    page?: string;
+  };
+}
+
+
+export default async function Home({searchParams}: Props ) {
+
+  const ParseSearchParams = await searchParams;
+
+  const page = ParseSearchParams.page ? parseInt( ParseSearchParams.page) : 1;
+
+
+  const {products, currentPage, totalPages} = await getPaginateProductsWithImages({ page});
+
+  if (products.length === 0) {
+    redirect("/");
+  }
+
   return (
     <>
     <Title
@@ -14,9 +35,14 @@ export default function Home() {
     className="mb-2"
     />
 
+   {/*  Comente la linea SIZE en interface/productinterface */}
     <ProductGrid 
-      products={products}
-      />
+    products={products}
+    />
+    <Suspense fallback ={<div>Cargando....</div>} >
+    <Pagination totalPages={totalPages}/>
+    </Suspense>
+
     </>
   );
 }
