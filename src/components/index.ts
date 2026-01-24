@@ -11,6 +11,7 @@ export * from './ui/sidebar/Sidebar';
 
 export * from './product/quantity-selector/QuantitySelector';
 export * from './product/size-selector/SizeSelector';
+export * from './product/Stock-label/StockLabel';
 
 
 export * from './product/slideshow/ProductSlideShow';

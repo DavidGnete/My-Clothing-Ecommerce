@@ -52,10 +52,9 @@ export const getPaginateProductsWithImages =async({
             totalPages: totaPages,
             products: products.map( product => ({
                 ...product,
-                images: product.ProductImage.map( image => image.url)
-            }))
-        }
-
+                images: product.ProductImage.map( (image) => image.url)
+            })),
+        };
     }catch (error) {
         throw new Error("No se pudieron cargar los productos")
 

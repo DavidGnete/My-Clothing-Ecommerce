@@ -1,11 +1,11 @@
-import { initialData } from "@/seed/seed";
-import { Product } from '../../../../interfaces/product.interface';
+export const revalidate = 604800; //7 dias 
+
 import { notFound } from "next/navigation";
-import { title } from "process";
+
 import { titleFont } from "@/config/fonts";
-import { ProductMovileSlideShop, ProductSlideShow, QuantitySelector, SizeSelector } from "@/components";
-
-
+import { ProductMovileSlideShop, ProductSlideShow, QuantitySelector, SizeSelector, StockLabel } from "@/components";
+import { getProductBySlug } from "@/actions";
+import { Metadata, ResolvingMetadata } from "next";
 
 
 interface Props {
@@ -14,11 +14,36 @@ interface Props {
   }
 }
 
-export default async function ({params}: Props ) {
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata 
+): Promise<Metadata> {
+
+  const slug = params.slug;
+ 
+  // fetch post information
+  const product = await getProductBySlug(slug);
+
+ 
+  return {
+    title: product?.title,
+    description: product?.description ?? "",
+    openGraph: {
+    title: product?.title,
+    description: product?.description ?? "",
+      images: [`/products/${product?.images[1]}`],
+    }
+  }
+}
+
+
+
+export default async function ProductBySlugPager ({params}: Props ) {
 
   const {slug} = await params;
 
-  const product = initialData.products.find(product => product.slug === slug);
+  const product = await getProductBySlug(slug);
   if (!product){
     notFound();
   }
@@ -49,6 +74,8 @@ export default async function ({params}: Props ) {
       {/* Detalles */}
       <div className="col-span-1 px-5 ">
 
+       <StockLabel slug={product.slug} />
+
         <h1 className={`${titleFont.className} antialiased font-bold text-xl `} >
           {product.title}
         </h1>
@@ -57,8 +84,8 @@ export default async function ({params}: Props ) {
 
        {/*  selector de tallas */}
        <SizeSelector
-       selectedSize={ product.sizes[1]}
-       availableSize={product.sizes }
+       selectedSize={ product.Size[1]}
+       availableSize={product.Size }
        
        />
 
