@@ -14,7 +14,7 @@ interface Props {
 
 export default async function Home({searchParams}: Props ) {
 
-  const ParseSearchParams = await searchParams;
+  const ParseSearchParams = searchParams;
 
   const page = ParseSearchParams.page ? parseInt( ParseSearchParams.page) : 1;
 

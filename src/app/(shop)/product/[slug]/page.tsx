@@ -6,6 +6,7 @@ import { titleFont } from "@/config/fonts";
 import { ProductMovileSlideShop, ProductSlideShow, QuantitySelector, SizeSelector, StockLabel } from "@/components";
 import { getProductBySlug } from "@/actions";
 import { Metadata, ResolvingMetadata } from "next";
+import { AddToCart } from "./ui/AddToCart";
 
 
 interface Props {
@@ -20,7 +21,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata 
 ): Promise<Metadata> {
 
-  const slug = params.slug;
+  const slug = await params.slug;
  
   // fetch post information
   const product = await getProductBySlug(slug);
@@ -75,30 +76,12 @@ export default async function ProductBySlugPager ({params}: Props ) {
       <div className="col-span-1 px-5 ">
 
        <StockLabel slug={product.slug} />
-
         <h1 className={`${titleFont.className} antialiased font-bold text-xl `} >
           {product.title}
         </h1>
         <p className="text-lg mb-5">${product.price} </p>
 
-
-       {/*  selector de tallas */}
-       <SizeSelector
-       selectedSize={ product.Size[1]}
-       availableSize={product.Size }
-       
-       />
-
-
-      {/*  selector de cantidad */}
-      <QuantitySelector 
-      quantity={5}/>
-
-
-      {/* button */}
-      <button className="btn-primary my-5">
-        Agregar al carrito
-      </button>
+        <AddToCart product={product} />
 
       {/* Descripcion */}
       <h3 className="font-bold text-sm"> Descripcion</h3>

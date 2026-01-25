@@ -42,6 +42,5 @@ export const StockLabel = ( {slug}: Props) => {
       )
     }    
     </>
-     
   )
 }
