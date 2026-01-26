@@ -12,7 +12,7 @@ export const QuantitySelector = ({onQuantityChange, quantity}:Props ) => {
     const onValueChanged = (value: number) => {
         if (quantity + value < 1) return;
 
-        onQuantityChange( quantity + 1);
+        onQuantityChange( quantity + value);
     }
   return (
     <div className='flex '>

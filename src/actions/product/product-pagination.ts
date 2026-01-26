@@ -39,24 +39,25 @@ export const getPaginateProductsWithImages =async({
         console.log(gender)
 
         //obtener el total de las paginas 
-        //todo:
+        
         const totalCount = await prisma.product.count({
             where: {
                 gender: gender,
             },
         });
-        const totaPages  = Math.ceil(totalCount/ take);
+        const totalPages  = Math.ceil(totalCount/ take);
 
         return {
             currentPage: page,
-            totalPages: totaPages,
+            totalPages: totalPages,
             products: products.map( product => ({
                 ...product,
                 images: product.ProductImage.map( (image) => image.url)
             })),
         };
     }catch (error) {
-        throw new Error("No se pudieron cargar los productos")
+        console.error("No se pudieron cargar los productos",error)
+        throw new Error
 
     }
 }

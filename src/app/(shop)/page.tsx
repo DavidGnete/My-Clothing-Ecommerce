@@ -12,18 +12,17 @@ interface Props {
 }
 
 
-export default async function Home({searchParams}: Props ) {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const params = await searchParams;
 
-  const ParseSearchParams = searchParams;
+  const page = params.page ? parseInt(params.page) : 1;
 
-  const page = ParseSearchParams.page ? parseInt( ParseSearchParams.page) : 1;
-
-
-  const {products, currentPage, totalPages} = await getPaginateProductsWithImages({ page});
-
-  if (products.length === 0) {
-    redirect("/");
-  }
+  const { products, currentPage, totalPages } =
+    await getPaginateProductsWithImages({ page });
 
   return (
     <>
