@@ -49,9 +49,9 @@ export const TopMenu = () => {
       </div>
 
       <div className="flex items-center">
-        {/* <Link href="/search" className="mx-2">
+        <Link href="/search" className="mx-2">
           <IoSearchOutline className="w-5 h-5" />
-        </Link> */}
+        </Link>
 
         <Link href={
           ((totalItemInCart === 0) && loaded)
@@ -68,12 +68,12 @@ export const TopMenu = () => {
           </div>
         </Link>
 
-        {/* <button
+        <button
           onClick={openSideMenu}
           className="m-2 p-2 rounder-md transition-all hover:bg-gray-100 cursor-pointer"
         >
           Menu
-        </button> */}
+        </button>
       </div>
     </nav>
   );

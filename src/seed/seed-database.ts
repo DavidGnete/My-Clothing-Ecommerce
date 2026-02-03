@@ -1,17 +1,23 @@
 
-import prisma from '../lib/prisma.js'
 import { initialData } from '../seed/seed.js';
+import prisma from '../lib/prisma.js'
 declare var process: any;
 
 async function main () {
 
-    await Promise.all([
-    prisma.product.deleteMany(),
-    prisma.productImage.deleteMany(),
-    prisma.category.deleteMany(),
-    ]);
+ /*    await Promise.all([ */
+    await prisma.user.deleteMany();
 
-    const {categories, products} = initialData;
+    await prisma.productImage.deleteMany();
+    await prisma.product.deleteMany();
+    await prisma.category.deleteMany();
+ /*    ]); */
+
+    const {categories, products, users} = initialData;
+
+    await prisma.user.createMany({
+        data: users
+    });
 
 /* {
     name: 'Shirt'
@@ -28,8 +34,7 @@ async function main () {
     const categoriesMap = categoryDB.reduce((map, category) => {
     
     map[ category.name.toLowerCase()] = category.id;
-
-        return map;
+    return map;
     }, {} as Record<string, string> );
 
 
