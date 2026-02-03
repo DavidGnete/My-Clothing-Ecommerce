@@ -23,6 +23,12 @@ export interface CartProduct {
 }
 
 
+export interface ProductImage {
+    id: number;
+    url: string;
+    productId?: string;
+}
+
 
 export type ValidCategorie ='men'|'women'|'kid'|'unisex';
 export type Size = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL';
