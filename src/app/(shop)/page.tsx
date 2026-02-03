@@ -12,11 +12,7 @@ interface Props {
 }
 
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ page?: string }>;
-}) {
+export default async function Home({searchParams}: Props) {
   const params = await searchParams;
 
   const page = params.page ? parseInt(params.page) : 1;
