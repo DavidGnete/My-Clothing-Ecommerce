@@ -16,7 +16,7 @@ interface Props {
   };
 }
 
-export default async function ProductsPage({ searchParams}: Props ) {
+export default async function ProductsView({ searchParams}: Props ) {
 
     const params = await searchParams;
   const page = params.page ? parseInt(params.page) : 1;
@@ -30,7 +30,7 @@ export default async function ProductsPage({ searchParams}: Props ) {
 
 
       <div className="flex justify-end mb-5">
-        <Link href='/admin/product/new' className="bnt-primary">
+        <Link href='/admin/product/new' className="btn-primary">
             Nuevo Producto
         </Link>
 
@@ -105,7 +105,7 @@ export default async function ProductsPage({ searchParams}: Props ) {
               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 
                 <Link 
-                href={`admin/product/${product.slug}`}
+                href={`/admin/product/${product.slug}`}
                 className="hover:underline"
                 >
                     {product.title}
