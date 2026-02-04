@@ -6,6 +6,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import { CreateUpdateProduct } from "@/actions";
 import { useRouter } from "next/navigation";
+import { ImageProducts } from "@/components";
 
 interface Props {
   product: Partial<Product> & { ProductImage?: ProductImage[] };
@@ -223,9 +224,9 @@ export const  ProductForm = ({ product, categories }: Props) => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {product.ProductImage?.map((image) => (
               <div key={image.id}>
-                <Image
+                <ImageProducts
                   alt={product.title ?? ""}
-                  src={`/products/${image.url}`}
+                  src={image.url}
                   width={400}
                   height={300}
                   className="rounded-t shadow-md"
