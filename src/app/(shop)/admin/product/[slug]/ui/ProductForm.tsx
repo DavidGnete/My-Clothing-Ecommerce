@@ -4,6 +4,8 @@ import {useForm} from 'react-hook-form'
 
 import { Product,ProductImage, Category } from "@/interfaces";
 import Image from 'next/image';
+import clsx from 'clsx';
+import { CreateUpdateProduct } from '@/actions';
 
 
 
@@ -19,7 +21,7 @@ interface FormInputs {
   slug: string;
   description: string;
   price: number;
-  inStrock: number;
+  inStock: number;
   sizes: string[];
   tags: string;
   gender: 'men' | 'women' | 'kid' | 'unisex';
@@ -36,6 +38,9 @@ export const ProductForm = ({ product, categories }: Props) => {
     handleSubmit,
     register,
     formState: {isValid},
+    getValues,
+    setValue,
+    watch,
   } = useForm<FormInputs>({
     defaultValues: {
       ...product,
@@ -47,8 +52,37 @@ export const ProductForm = ({ product, categories }: Props) => {
     }
   });
 
+  watch ( 'sizes');
+
+  const onSizeChange = ( size: string) => {
+
+    const sizes = new Set(getValues('sizes'));
+    sizes.has( size) ? sizes.delete(size)  : sizes.add(size);
+
+    setValue('sizes', Array.from( sizes));
+  }
+
   const onSubmit = async (data: FormInputs) => {
-    console.log({data});
+    
+    const formData = new FormData();
+
+    const {...producToSave} = data;
+
+    formData.append('id', product.id ?? '');
+    formData.append('title', producToSave.title );
+    formData.append('slug', producToSave.slug );
+    formData.append('description', producToSave.description);
+    formData.append('price', producToSave.price.toString() );
+    formData.append('inStock', producToSave.inStock.toString());
+    formData.append('sizes', producToSave.sizes.toString());
+    formData.append('tags', producToSave.tags);
+    formData.append('categoryId', producToSave.categoryId);
+    formData.append('gender', producToSave.gender);
+
+
+    const {ok} = await CreateUpdateProduct( formData);
+
+    console.log({ok} )
 
 
 
@@ -130,7 +164,18 @@ export const ProductForm = ({ product, categories }: Props) => {
             {
               sizes.map( size => (
                 // bg-blue-500 text-white <--- si está seleccionado
-                <div key={ size } className="flex  items-center justify-center w-10 h-10 mr-2 border rounded-md">
+                <div key={ size }
+                onClick={() => onSizeChange(size)}
+                
+                className={
+                  clsx(
+                    "p-2  cursor-pointer text-center border rounded-md mr-2 mb-2 w-14 transition-all",
+                    {
+                      'bg-blue-500 text-white': getValues('sizes').includes(size)
+                    }
+                  )
+                }
+                >
                   <span>{ size }</span>
                 </div>
               ))
