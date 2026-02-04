@@ -8,3 +8,5 @@ export * from  './product/create-update-product';
 
 export * from './auth/login';
 export * from './auth/logout';
+
+export * from './product/delete-product-image';
