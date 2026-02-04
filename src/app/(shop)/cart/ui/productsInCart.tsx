@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useCartStore } from "@/store";
-import { QuantitySelector } from "@/components";
+import { ImageProducts, QuantitySelector } from "@/components";
 import Link from "next/link";
 
 export const ProductsInCart = () => {
@@ -23,8 +23,8 @@ export const ProductsInCart = () => {
     <>
       {ProductInCart.map((product) => (
         <div key={`${product.slug}-${product.size}`} className="flex mb-10">
-          <Image
-            src={`/products/${product.image}`}
+          <ImageProducts
+            src={product.image}
             width={100}
             height={100}
             style={{

@@ -1,13 +1,14 @@
 
 
 import { getPaginateProductsWithImages } from "@/actions";
-import { Pagination, Title } from "@/components";
+import { Pagination, ImageProducts, Title } from "@/components";
 import { CurrencyFormat } from "@/utils";
 import Image from "next/image";
 
 import Link from "next/link";
 
 import { Redirect } from "next";
+import { ProductImage } from '../../../../interfaces/product.interface';
 
 
 interface Props {
@@ -91,13 +92,15 @@ export default async function ProductsView({ searchParams}: Props ) {
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 
             <Link href={`/product/${product.slug}`}>
-                <Image
-                src={ `/products/${product.ProductImage[0].url}` }
+
+              <ImageProducts
+                src={product.ProductImage[0]?.url }
                 width={80}
                 height={80}
                 alt={product.title }
                 className="w-20 h-20 object-cover rounded"
                 />
+
             </Link>
 
               </td>
