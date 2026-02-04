@@ -1,11 +1,11 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 
 import { Product, ProductImage, Category } from "@/interfaces";
 import Image from "next/image";
 import clsx from "clsx";
 import { CreateUpdateProduct } from "@/actions";
+import { useRouter } from "next/navigation";
 
 interface Props {
   product: Partial<Product> & { ProductImage?: ProductImage[] };
@@ -28,7 +28,11 @@ interface FormInputs {
   // todo: Images
 }
 
-export const ProductForm = ({ product, categories }: Props) => {
+export const  ProductForm = ({ product, categories }: Props) => {
+
+  const router = useRouter();
+
+
   const {
     handleSubmit,
     register,
@@ -73,9 +77,14 @@ export const ProductForm = ({ product, categories }: Props) => {
     formData.append("categoryId", producToSave.categoryId);
     formData.append("gender", producToSave.gender);
 
-    const { ok } = await CreateUpdateProduct(formData);
+    const { ok, product:updateProduct } = await CreateUpdateProduct(formData);
 
-    console.log({ ok });
+    if ( !ok ) {
+      alert('producto no se pudo actualizar')
+      return;
+    }
+
+    router.replace(`/admin/product/${updateProduct?.slug}`)
   };
 
   return (
@@ -200,7 +209,7 @@ export const ProductForm = ({ product, categories }: Props) => {
               type="file"
               multiple
               className="p-2 border rounded-md bg-gray-200"
-              accept="image/png, image/jpeg"
+              accept="image/png, image/jpeg, image/avif"
             />
           </div>
 
@@ -218,9 +227,9 @@ export const ProductForm = ({ product, categories }: Props) => {
                 <button
                   type="button"
                   onClick={() => console.log(image.id, image.url)}
-                  className="btn-danger w-full rounded-b-xl"
+                  className="btn-danger w-full rounded-b-xl cursor-pointer"
                 >
-                  eliminar
+                  Eliminar
                 </button>
               </div>
             ))}

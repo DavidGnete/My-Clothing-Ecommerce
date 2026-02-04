@@ -1,6 +1,7 @@
 'use server';
 import prisma from '@/lib/prisma';
 import { Gender, Size, Product } from '@prisma/client';
+import { revalidatePath } from 'next/cache';
 import {z} from 'zod';
 
 
@@ -37,7 +38,9 @@ export const CreateUpdateProduct = async ( formData:FormData) => {
 
     const  {id, ...rest} = product;
 
-    const prismaTx = await prisma.$transaction( async (tx)=> {
+    try{
+        const prismaTx = await prisma.$transaction( async (tx)=> {
+    
 
     let product: Product;
 
@@ -98,10 +101,23 @@ export const CreateUpdateProduct = async ( formData:FormData) => {
         }
     });
 
-    // todo: revlidatePaths
-
+    // Todo: RevalidarPaths
+    revalidatePath('/admin/products');
+    revalidatePath(`/admin/product/${product.slug}`);
+    revalidatePath(`/products/${product.slug}`);
+    
 
     return {
         ok: true,
+        product: prismaTx.product,
+    }
+        
+    }catch(error) {
+
+        return {
+            ok: false,
+            message: 'Revisar los logs, no se puede actualizar/crear'
+        }
+        
     }
 }
