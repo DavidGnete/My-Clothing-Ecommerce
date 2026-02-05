@@ -1,5 +1,5 @@
 'use server';
-import { Category } from '../../generated/prisma/index';
+
 import prisma from '@/lib/prisma';
 
 export const getCategories = async () => {
