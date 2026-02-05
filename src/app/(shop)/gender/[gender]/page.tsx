@@ -4,7 +4,7 @@ import {  redirect } from "next/navigation";
 import { Pagination, ProductGrid, Title } from "@/components";
 import { getPaginateProductsWithImages } from "@/actions";
 /* import { Gender } from '../../../../generated/prisma/enums'; */
-import { Gender } from '@/generated/prisma/enums';
+import { Gender } from '@prisma/client';
 
 
 interface Props {
