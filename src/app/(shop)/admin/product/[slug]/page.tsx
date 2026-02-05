@@ -5,7 +5,7 @@ import { Title } from "@/components";
 import { redirect } from "next/navigation";
 import { ProductForm } from "./ui/ProductForm";
 import { getCategories } from "@/actions";
-import { Product } from '../../../../../generated/prisma/index';
+
 
 
 interface Props {
