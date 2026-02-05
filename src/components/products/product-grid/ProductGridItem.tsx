@@ -3,27 +3,31 @@ import { Product } from '@/interfaces'
 import React, { useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import { ImageProducts } from '@/components/product/product-image/productImage';
 
 interface Props {
     product : Product;
 }
 
 export const ProductGridItem = ({ product}: Props ) => {
-    const [displayImages, setdisplayImages] = useState(product.images[0] );
+    const [displayImages, setdisplayImages] = useState<string>(product.images?.[0] ?? '');
 
 
   return (
-    <div className='rounder-md overflow-hidden fade-in'>
+    <div className="rounded-md overflow-hidden fade-in">  
         <Link  href={`/product/${product.slug}`}>    
-        <Image
-        src={`/products/${displayImages}` }
+    <div className='relative w-full aspect-square overflow-hidden rounded'>
+        <ImageProducts
+        src={displayImages}
         alt= {product.title}
-        className="w-full object-cover rounded"
+        className="object-cover rounded"
         width={500}
         height={500}
-        onMouseEnter={ () => setdisplayImages(product.images[1] )}
-        onMouseLeave={ () => setdisplayImages(product.images[0] )}
-        ></Image>
+        onMouseEnter={ () => setdisplayImages(product.images?.[1] ?? '' )}
+        onMouseLeave={ () => setdisplayImages(product.images?.[0] ?? '')}
+        ></ImageProducts>
+        
+        </div>
         </Link>
         
 

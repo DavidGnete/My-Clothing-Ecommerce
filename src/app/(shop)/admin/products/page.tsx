@@ -1,8 +1,8 @@
-
-
 import { getPaginateProductsWithImages } from "@/actions";
 import { Pagination, ImageProducts, Title } from "@/components";
 import { CurrencyFormat } from "@/utils";
+import { IoTrash} from "react-icons/io5";
+import { DeleteProductsBD } from "@/components/product/delete-product/DeleteProductBD";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -16,6 +16,7 @@ interface Props {
     page?: string;
   };
 }
+
 
 export default async function ProductsView({ searchParams}: Props ) {
 
@@ -77,13 +78,18 @@ export default async function ProductsView({ searchParams}: Props ) {
               >
                 Tallas
               </th>
+              <th
+                scope="col"
+                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+              >
+                Eliminar
+         
+              </th>
             </tr>
           </thead>
           <tbody>
 
             {products.map((product) => (
-
-
             <tr 
             key={product.id}
             className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
@@ -131,7 +137,14 @@ export default async function ProductsView({ searchParams}: Props ) {
             {product.Size.join(', ')}
               </td>
 
-        
+
+             <td className="text-sm  text-gray-900 font-bold px-6 py-4 whitespace-nowrap">
+            <DeleteProductsBD productId={product.id} />
+              </td>
+
+
+             
+  
             </tr>
             ))}
 
