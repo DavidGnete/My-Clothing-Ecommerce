@@ -1,6 +1,5 @@
 
 import { Metadata } from "next";
-import { geistSans, geistMono } from "../config/fonts";
 import "./globals.css";
 import { Provider } from "@/components";
 
