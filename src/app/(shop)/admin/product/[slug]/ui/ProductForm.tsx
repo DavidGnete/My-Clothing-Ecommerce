@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 
 import { Product, ProductImage, Category } from "@/interfaces";
-import Image from "next/image";
+
 import clsx from "clsx";
 import { CreateUpdateProduct, DeleteProductImage } from "@/actions";
 import { useRouter } from "next/navigation";
