@@ -160,6 +160,7 @@ try {
 })
 
     const uploadImages = await Promise.all( uploadPromises);
+    console.log('Url generada por cloudinary', uploadImages)
     return uploadImages;
 
     }catch (error){

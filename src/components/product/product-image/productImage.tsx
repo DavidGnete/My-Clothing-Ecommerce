@@ -15,7 +15,7 @@ interface Props {
 export const ImageProducts = ( {src, alt, className, width, height, style, onMouseEnter, onMouseLeave}:Props) => {
 
     const localSRC = (src )
-    ? src?.startsWith('http')
+    ? src.trim().startsWith('http')
      ? src
      :`/products/${src}`
      :'/imgs/placeholder.jpg';
