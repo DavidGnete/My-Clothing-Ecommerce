@@ -14,8 +14,6 @@ import 'swiper/css/pagination';
 import './slideshow.css';
 
 
-
-
 interface Props {
     images: string[];
     title:string;
@@ -49,7 +47,7 @@ export const ProductMovileSlideShop = ({images, title, clasName}: Props) => {
                 <Image loading='lazy'
                 width={600}
                 height={500}
-                src={`/products/${image }`}
+                src={`${image }`}
                 alt={title}
                 className=" object-fill"
                 />

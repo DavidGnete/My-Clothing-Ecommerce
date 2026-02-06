@@ -19,8 +19,8 @@ export const ProductGridItem = ({ product}: Props ) => {
     <div className='relative w-full aspect-square overflow-hidden rounded'>
         <ImageProducts
         src={displayImages}
-        alt= {product.title}
-        className="object-cover rounded"
+        alt={product.title}
+        className="object-cover rounded w-full h-full"
         width={500}
         height={500}
         onMouseEnter={ () => setdisplayImages(product.images?.[1] ?? '' )}
@@ -43,3 +43,4 @@ export const ProductGridItem = ({ product}: Props ) => {
     </div>
   )
 }
+

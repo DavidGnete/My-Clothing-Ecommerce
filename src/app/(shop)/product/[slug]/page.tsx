@@ -21,7 +21,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata 
 ): Promise<Metadata> {
 
-  const slug = await params.slug;
+  const {slug} = await params;
  
   // fetch post information
   const product = await getProductBySlug(slug);
@@ -33,7 +33,7 @@ export async function generateMetadata(
     openGraph: {
     title: product?.title,
     description: product?.description ?? "",
-      images: [`/products/${product?.images[1]}`],
+      images: [`${product?.images[1]}`],
     }
   }
 }

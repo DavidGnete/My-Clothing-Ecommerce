@@ -8,6 +8,7 @@ interface Props {
     style?: React.StyleHTMLAttributes<HTMLImageElement>['style'];
     width: number;
     height: number;
+    unoptimized?: boolean;
     onMouseEnter?:React.MouseEventHandler<HTMLImageElement>;
     onMouseLeave?:React.MouseEventHandler<HTMLImageElement>;
 }
@@ -16,9 +17,9 @@ export const ImageProducts = ( {src, alt, className, width, height, style, onMou
 
     const localSRC = (src )
     ? src.trim().startsWith('http')
-     ? src
-     :`/products/${src}`
-     :'/imgs/placeholder.jpg';
+    ? src
+    :`/products/${src}`
+    :'/imgs/placeholder.jpg';
 
   return (
         <Image
@@ -28,6 +29,7 @@ export const ImageProducts = ( {src, alt, className, width, height, style, onMou
             alt={alt }
             className={className}
             style={style}
+            unoptimized
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         />
