@@ -2,12 +2,12 @@
 import { titleFont } from "@/config/fonts";
 import Link from "next/link";
 import { IoSearchOutline, IoCartOutline} from "react-icons/io5";
-
 import React, { useEffect, useState } from "react";
 import { useCartStore, useUIStore } from "@/store";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
+  const openMobileMenu = useUIStore((state) => state.openMobileMenu);
   const totalItemInCart = useCartStore((state) => state.getTotalItems());
 
   const [loaded, setloaded] = useState(false);
@@ -69,8 +69,16 @@ export const TopMenu = () => {
         </Link>
 
         <button
+          onClick={openMobileMenu}
+          className="sm:hidden m-2 p-2 hover:bg-gray-100 rounded-md"
+        >
+          Menu
+        </button>
+
+        {/* BOTÓN DESKTOP */}
+        <button
           onClick={openSideMenu}
-          className="m-2 p-2 rounder-md transition-all hover:bg-gray-100 cursor-pointer"
+          className="hidden sm:block m-2 p-2 hover:bg-gray-100 rounded-md"
         >
           Menu
         </button>
