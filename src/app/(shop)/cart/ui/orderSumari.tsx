@@ -4,9 +4,17 @@ import { useCartStore } from "@/store";
 import { CurrencyFormat } from "@/utils";
 import { useEffect, useMemo, useState } from "react";
 
-export const OrderSumari = () => {
-  const [loaded, setLoaded] = useState(false);
+interface Props {
+  sendMessage?: (summary:{
+    subTotal: number,
+    tax: number,
+    total: number,
+    itemsInCart:number,
+  }) => void;
+}
 
+export const OrderSumari = ({sendMessage}:Props ) => {
+  const [loaded, setLoaded] = useState(false);
   const cart = useCartStore(state => state.cart);
 
   const summary = useMemo(() => {
@@ -25,6 +33,10 @@ export const OrderSumari = () => {
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  useEffect(() => {
+    sendMessage?.(summary);
+  }, [summary, sendMessage])
 
   if (!loaded) return <p>Loading...</p>;
 

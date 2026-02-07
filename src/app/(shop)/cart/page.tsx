@@ -9,6 +9,7 @@ export default function CartPage() {
 /*   redirect('/empty')
  */
 
+
   return (
     <div className="flex justify-center items-center mb-72 px-10 sm:px-0">
       <div className="flex flex-col w-[100px">
@@ -36,11 +37,10 @@ export default function CartPage() {
           <div className="bg-white rounded-xl shadow-xl p-7 h-fit">
             <h2 className="text-2xl mb-2">Resumen de compra</h2>
 
-          <OrderSumari/>
+          <OrderSumari />
 
-            <div className="mt-5 mb-2 w-full ">
-
-              <Link href="/checkout/address"
+            <div className="mt-5 mb-2 w-full">
+              <Link href="/checkout"
               className="flex btn-primary justify-center"
               >
               Checkout
