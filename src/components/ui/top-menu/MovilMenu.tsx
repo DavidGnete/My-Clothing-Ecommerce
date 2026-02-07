@@ -45,7 +45,7 @@ export const MovilMenu = () => {
         {/* CATEGORÍAS */}
         <div className="mt-14 flex flex-col gap-2 sm:hidden">
             
-            <span className={`${titleFont.className} pl-5 antialiased font-bold`}>
+            <span className={`${titleFont.className} pl-6 antialiased font-bold`}>
                 Categorias
             </span>
             

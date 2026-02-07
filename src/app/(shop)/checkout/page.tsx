@@ -33,7 +33,6 @@ export default function () {
       products: productos,
       summary,
       orderDate: new Date().toISOString(),
-      checkoutUrl: window.location.href,
     };
 
     // 3️⃣ Enviar a WhatsApp

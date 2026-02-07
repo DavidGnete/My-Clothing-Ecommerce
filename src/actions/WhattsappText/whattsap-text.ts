@@ -35,14 +35,14 @@ export const WhattsapInformation = (
   // Validar que haya productos
   if (!orderData.products || orderData.products.length === 0) {
     console.error('No hay productos en el pedido');
-    alert('No hay productos en el carrito para enviar');
+    throw new Error('No hay productos en el carrito para enviar');
     return;
   }
 
   // Validar que haya resumen
   if (!orderData.summary) {
     console.error('No hay resumen del pedido');
-    alert('Error al calcular el resumen del pedido');
+    throw new Error('Error al calcular el resumen del pedido');
     return;
   }
 
@@ -64,7 +64,6 @@ export const WhattsapInformation = (
  */
 const formatOrderMessage = (
   orderData: OrderData,
-  customerName?: string
   
 ): string => {
   const { products, summary, checkoutUrl } = orderData;
