@@ -1,7 +1,29 @@
 
 import { initialData } from '../seed/seed.js';
 import prisma from '../lib/prisma.js'
+
+import { v2 as cloudinary } from 'cloudinary';
+import fs from 'fs'
+import path from 'path';
+
 declare var process: any;
+cloudinary.config(process.env.CLOUDINARY_URL ?? '');
+
+
+async function uploadImageToCloudinary(imagePath: string) {
+  const absolutePath = path.join(process.cwd(), 'public/products', imagePath);
+
+  if (!fs.existsSync(absolutePath)) {
+    throw new Error(`Imagen no encontrada: ${absolutePath}`);
+  }
+
+  const result = await cloudinary.uploader.upload(absolutePath, {
+    folder: 'products'
+  });
+
+  return result.secure_url;
+}
+
 
 async function main () {
 
@@ -54,14 +76,20 @@ async function main () {
     });
 
     //Images
-    const ImagesData = images.map( image => ({
-        url: image,
-        productId: dbProduct.id
-    }))
+    const uploadedImages: { url: string; productId: string }[] = [];
 
-    await prisma.productImage.createMany({
-        data: ImagesData
+  for (const image of images) {
+    const cloudinaryUrl = await uploadImageToCloudinary(image);
+
+    uploadedImages.push({
+      url: cloudinaryUrl,
+      productId: dbProduct.id
     });
+  }
+ await prisma.productImage.createMany({
+    data: uploadedImages
+  });
+
 }
 console.log("seed ejecutado correctamente")
 }
