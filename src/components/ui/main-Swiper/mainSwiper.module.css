@@ -1,32 +1,40 @@
-/* Esto es vital para que 'fill' funcione */
+
 .mySwiper {
   width: 100%;
-  height: 70vh;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 30px;
+  height: 35vh;      /* Altura inicial */
+  margin: 0 auto;
+  border-radius: 0;  /* SIN BORDES por defecto */
+  overflow: hidden;
+  position: relative;
 }
 
-/* 1. Celulares Muy Pequeños (iPhone SE, modelos viejos) */
-@media (max-width: 375px) {
-.mySwiper {
-    height: 35vh; /* Menos altura para no tapar toda la pantalla */
-    border-radius: 0px; /* Redondeado más pequeño para que no se vea exagerado */
+@media (min-width: 376px) {
+  .mySwiper {
+    height: 45vh;    /* Aumentamos solo la altura */
   }
 }
 
-/* 2. Celulares Medianos/Estándar (iPhone 13, 14, 15, Androids comunes) */
-@media (min-width: 376px) and (max-width: 480px) {
-.mySwiper {
-    height: 45vh; 
-    border-radius: 0px;
-  }
-}
-
-/* 3. Celulares Grandes o Tablets pequeñas (iPhone Pro Max, Galaxy Ultra) */
-@media (min-width: 481px) and (max-width: 768px) {
-.mySwiper {
+/* ==========================================
+   3. TABLETS Y CELULARES "MAX"
+   A partir de 481px
+   ========================================== */
+@media (min-width: 481px) {
+  .mySwiper {
     height: 50vh;
-    border-radius: 0px;
+  }
+}
+
+/* ==========================================
+   4. DESKTOP (PC y Laptops)
+   */
+@media (min-width: 1024px) {
+  .mySwiper {
+    height: 70vh;       /* Tu altura deseada en escritorio */
+    width: 100%;         /* Despegamos de los bordes laterales */
+    border-radius: 30px; 
+  }
+
+  .mySwiper :global(.swiper-slide) {
+    border-radius: 30px;
   }
 }
