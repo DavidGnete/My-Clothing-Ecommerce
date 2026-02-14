@@ -30,13 +30,13 @@ export const Mainswiper = ({images}: Props) => {
         className={styles.mySwiper} >
         {
           images.map ( image => (
-          <SwiperSlide>
+          <SwiperSlide className={styles.mySwiper}>
             <Image 
             src={`/promotion/${image}`}
             alt='imagenes'
             fill
             priority
-            className='object-contain'/>
+            className='object-cover'/>
           </SwiperSlide>
           ))
 
