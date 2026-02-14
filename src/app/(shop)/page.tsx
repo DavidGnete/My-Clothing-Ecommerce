@@ -7,9 +7,17 @@ import { Suspense } from "react";
 
 interface Props {
   searchParams: {
-    page?: string;
+    page: string;
+    images: string[
+
+    ];
   };
 }
+
+const slidePromo = [
+  'Slide-Paisita.webp',
+  'cowork5.jpg'
+]
 
 export default async function Home({ searchParams }: Props) {
   const params = await searchParams;
@@ -21,7 +29,8 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <>
-    <Mainswiper />
+    <Mainswiper  images= {slidePromo} />
+
       <Title title="Tienda" subtitle="Todos los productos" className="mb-2" />
 
       {/*  Comente la linea SIZE en interface/productinterface */}
