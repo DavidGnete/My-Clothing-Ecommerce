@@ -11,7 +11,7 @@
 @media (max-width: 375px) {
   .mySwiper {
     height: 35vh; /* Menos altura para no tapar toda la pantalla */
-    border-radius: 15px; /* Redondeado más pequeño para que no se vea exagerado */
+    border-radius: 0px; /* Redondeado más pequeño para que no se vea exagerado */
   }
 }
 
@@ -19,7 +19,7 @@
 @media (min-width: 376px) and (max-width: 480px) {
   .mySwiper {
     height: 45vh; 
-    border-radius: 20px;
+    border-radius: 0px;
   }
 }
 
@@ -27,6 +27,6 @@
 @media (min-width: 481px) and (max-width: 768px) {
   .mySwiper {
     height: 50vh;
-    border-radius: 25px;
+    border-radius: 0px;
   }
 }
