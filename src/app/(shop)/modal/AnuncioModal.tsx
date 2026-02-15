@@ -31,7 +31,7 @@ export const AnuncioModal = () => {
                 lg:max-w-xs
                 xl:max-w-xl'>
       <Image
-      src='/imgs/poster.webp'
+      src='/promotion/modalWork.webp'
       alt='anuncio pagina web'
       width={1200}
       height={1600}

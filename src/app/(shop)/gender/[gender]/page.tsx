@@ -50,7 +50,6 @@ export default async function ({params, searchParams}: Props) {
     <>
     <Title
           title={`Articulos ${ (labels)[gender] }`}
-          subtitle={`Productos para ${(labels)[gender] }`}
           className="mb-2"
           />
       
