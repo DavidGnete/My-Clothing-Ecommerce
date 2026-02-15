@@ -16,7 +16,8 @@ interface Props {
 
 const slidePromo = [
   'Slide-Paisita.webp',
-  'cowork5.jpg'
+  'promo1.webp',
+  'promo2.webp',
 ]
 
 export default async function Home({ searchParams }: Props) {
