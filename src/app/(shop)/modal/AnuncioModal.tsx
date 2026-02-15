@@ -29,7 +29,7 @@ export const AnuncioModal = () => {
         <div className='relative w-[90%] max-w-xs 
                 md:max-w-xs
                 lg:max-w-xs
-                xl:max-w-md'>
+                xl:max-w-lg'>
       <Image
       src='/promotion/modalWork.webp'
       alt='anuncio pagina web'
