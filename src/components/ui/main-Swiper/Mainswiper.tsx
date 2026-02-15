@@ -24,7 +24,7 @@ export const Mainswiper = ({images}: Props) => {
         <Swiper  pagination={{
         }}
         loop
-        autoplay={{delay: 3000, disableOnInteraction: false,}}
+        autoplay={{delay: 4000, disableOnInteraction: false,}}
         centeredSlides={true}
         modules={[Pagination, Autoplay]}
         className={styles.mySwiper} >
