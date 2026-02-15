@@ -35,7 +35,7 @@ export default async function Home({ searchParams }: Props) {
 
       <TextWhattsap clasName="mt-10" />
 
-      <Title  subtitle="Todos los productos"  />
+      <Title  subtitle="Todos los productos " className="font-bold"  />
       {/*  Comente la linea SIZE en interface/productinterface */}
       <ProductGrid products={products} />
       <Suspense fallback={<div>Cargando....</div>}>
