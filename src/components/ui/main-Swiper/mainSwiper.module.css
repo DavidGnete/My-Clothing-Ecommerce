@@ -1,16 +1,28 @@
 
 .mySwiper {
   width: 100%;
-  height: 35vh;      /* Altura inicial */
+  height: 20vh;      /* Altura inicial */
   margin: 0 auto;
   border-radius: 0;  /* SIN BORDES por defecto */
   overflow: hidden;
   position: relative;
+  
+
 }
+
+.mySwiper :global(.swiper-slide img) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Cambia de 'cover' a 'contain' */
+  object-position: center;
+}
+
+
 
 @media (min-width: 376px) {
   .mySwiper {
-    height: 45vh;    /* Aumentamos solo la altura */
+    height: 30vh;
+    
   }
 }
 
@@ -20,7 +32,9 @@
    ========================================== */
 @media (min-width: 481px) {
   .mySwiper {
-    height: 50vh;
+    width: 100%;
+    height: 35vh;
+    
   }
 }
 
@@ -33,8 +47,7 @@
     width: 100%;         /* Despegamos de los bordes laterales */
     border-radius: 30px; 
   }
-
-  .mySwiper :global(.swiper-slide) {
-    border-radius: 30px;
+   .mySwiper :global(.swiper-slide img) {
+    object-fit: cover; /* En desktop vuelve a cover */
   }
 }

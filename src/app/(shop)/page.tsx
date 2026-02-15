@@ -2,6 +2,7 @@ export const revalidate = 60;
 import { getPaginateProductsWithImages } from "@/actions";
 import { Pagination, ProductGrid, Title } from "@/components";
 import { Mainswiper } from "@/components/ui/main-Swiper/Mainswiper";
+import { TextWhattsap } from "@/components/ui/TextWhattsap/TextWhattsap";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
@@ -31,6 +32,8 @@ export default async function Home({ searchParams }: Props) {
   return (
     <>
     <Mainswiper  images= {slidePromo} />
+
+      <TextWhattsap />
 
       <Title title="Tienda" subtitle="Todos los productos" className="mb-2" />
 

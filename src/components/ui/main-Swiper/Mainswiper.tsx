@@ -36,7 +36,7 @@ export const Mainswiper = ({images}: Props) => {
             alt='imagenes'
             fill
             priority
-            className='object-cover'/>
+            className='object-contain'/>
           </SwiperSlide>
           ))
 
