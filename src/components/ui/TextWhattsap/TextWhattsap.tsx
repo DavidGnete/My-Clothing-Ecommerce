@@ -35,7 +35,7 @@ export const TextWhattsap = () => {
       lg:text-xl lg:mt-8
       xl:text-2xl xl:mt-10`}
       >
-        Creamos tu tienda online personalizada para que recibas pedidos
+        Creamos tu tienda online personalizada para que recibas tus pedidos
         organizados y ventas sin límites.
       </h2>
 
@@ -52,20 +52,23 @@ export const TextWhattsap = () => {
         cursor-pointer
         transition-all
         duration-300
-        w-14 h-14
-        md:w-16 md:h-16
-        lg:w-20 lg:h-20
-        xl:w-24 xl:h-24
+        w-50 h-14
+        md:w-50 md:h-16
+        lg:w-50 lg:h-20
+        xl:w-50 xl:h-24 xl:text-lg
+        font-bold
         "
         onClick={HandleClick}
         type="button"
       >
         <FaWhatsapp
-          className="text-2xl
+          className="m-2 text-2xl
                         md:text-3xl
                         lg:text-4xl
                         xl:text-5xl"
         />
+        Contactanos
+        
       </button>
     </div>
   );
