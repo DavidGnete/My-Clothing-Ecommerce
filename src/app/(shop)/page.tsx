@@ -33,10 +33,9 @@ export default async function Home({ searchParams }: Props) {
     <>
     <Mainswiper  images= {slidePromo} />
 
-      <TextWhattsap />
+      <TextWhattsap clasName="mt-10" />
 
-      <Title title="Tienda" subtitle="Todos los productos" className="mb-2" />
-
+      <Title  subtitle="Todos los productos"  />
       {/*  Comente la linea SIZE en interface/productinterface */}
       <ProductGrid products={products} />
       <Suspense fallback={<div>Cargando....</div>}>

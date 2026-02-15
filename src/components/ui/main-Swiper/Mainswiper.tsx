@@ -14,13 +14,14 @@ import { Pagination, Autoplay } from 'swiper/modules';
 
 interface Props {
   images: string[],
+  clasName?: string,
 
 
 }
 
-export const Mainswiper = ({images}: Props) => {
+export const Mainswiper = ({images, clasName}: Props) => {
   return (
-    <div>
+    <div className={clasName}>
         <Swiper  pagination={{
         }}
         loop
