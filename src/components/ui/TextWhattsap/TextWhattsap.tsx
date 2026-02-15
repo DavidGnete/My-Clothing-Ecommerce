@@ -3,12 +3,9 @@ import React from 'react'
 import { FaWhatsapp } from "react-icons/fa";
 import { titleFont } from '@/config/fonts';
 
-interface Props {
-    clasName?: string;
-}
 
 
-export const TextWhattsap = ({clasName}:Props) => {
+export const TextWhattsap = () => {
 
     const WhattsapNumber ="+573108006524";
 
@@ -17,8 +14,8 @@ export const TextWhattsap = ({clasName}:Props) => {
         window.open(`https://wa.me/${WhattsapNumber}?text= ${message}`, "_blank")
     }
   return (
-    <div onClick={HandleClick}
-    className={`${clasName} px-4 py-6
+    <div 
+    className={` px-4 py-6
     md:px-8 md:py-8
     lg:px-12 lg:py-10 lg:max-w-4xl lg:mx-auto
     xl:max-w-5xl xl:px-16 xl:py-12`}>
@@ -53,6 +50,7 @@ export const TextWhattsap = ({clasName}:Props) => {
         mx-auto
         '>
         <button 
+        onClick={HandleClick}
         className='cursor-pointer'
         type='button'>
             <FaWhatsapp 

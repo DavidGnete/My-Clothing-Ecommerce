@@ -33,7 +33,7 @@ export default async function Home({ searchParams }: Props) {
     <>
     <Mainswiper  images= {slidePromo} />
 
-      <TextWhattsap clasName="mt-10" />
+      <TextWhattsap  />
 
       <Title  subtitle="Todos los productos " className="font-bold"  />
       {/*  Comente la linea SIZE en interface/productinterface */}
