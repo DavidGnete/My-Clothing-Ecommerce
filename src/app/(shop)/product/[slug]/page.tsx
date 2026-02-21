@@ -6,6 +6,7 @@ import { titleFont } from "@/config/fonts";
 import { ProductMovileSlideShop, ProductSlideShow, QuantitySelector, SizeSelector, StockLabel } from "@/components";
 import { getProductBySlug } from "@/actions";
 import { Metadata, ResolvingMetadata } from "next";
+
 import { AddToCart } from "./ui/AddToCart";
 
 

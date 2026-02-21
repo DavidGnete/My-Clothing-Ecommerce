@@ -7,6 +7,7 @@ import { useCartStore, useUIStore } from "@/store";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
+  
   const openMobileMenu = useUIStore((state) => state.openMobileMenu);
   const totalItemInCart = useCartStore((state) => state.getTotalItems());
 

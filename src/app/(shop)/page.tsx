@@ -37,6 +37,8 @@ export default async function Home({ searchParams }: Props) {
 
       <Title  subtitle="Todos los productos " className="font-bold"  />
       {/*  Comente la linea SIZE en interface/productinterface */}
+
+      {/* Este es el contenido Principal */}
       <ProductGrid products={products} />
       <Suspense fallback={<div>Cargando....</div>}>
         <Pagination totalPages={totalPages} />
